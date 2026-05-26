@@ -1,0 +1,79 @@
+---
+title: "Zed"
+description: "Configure Zed to use Qubrid AI models through the OpenAI-compatible provider"
+icon: "code"
+---
+
+Connect Zed to Qubrid AI by adding Qubrid as an OpenAI-compatible model provider. After setup, you can select Qubrid models directly from Zed's model selector and run prompts using your Qubrid endpoint and API key.
+
+
+
+<Info>
+  **Prerequisites**:
+  - Zed installed on your machine
+  - A Qubrid account with access to the AI Playground
+  - A Qubrid API key
+  - The Qubrid endpoint URL from the AI Playground
+  - The model name you want to use from Qubrid AI
+</Info>
+
+
+
+## Configure Qubrid AI in Zed
+
+<Steps>
+
+<Step title="Open the model provider panel">
+Open the model provider panel in Zed
+</Step>
+
+<Step title="Add an OpenAI provider">
+Click **Add provider** and select **OpenAI**
+
+![Add OpenAI provider in Zed](/images/Zed-1.png)
+</Step>
+
+<Step title="Add your Qubrid AI configuration">
+Copy the endpoint, model name, and API key from the Qubrid AI Playground, then replace the OpenAI provider values with your Qubrid values
+
+Keep the provider name as **Qubrid AI** so it is easy to identify in Zed
+
+![Configure Qubrid AI provider in Zed](/images/Zed-2.png)
+</Step>
+
+<Step title="Select a Qubrid AI model">
+Click the model selector at the bottom of Zed to find the Qubrid AI models
+
+![Select Qubrid AI model in Zed](/images/Zed-3.png)
+</Step>
+
+</Steps>
+
+Your Qubrid integration with Zed is now configured. You can select Qubrid models from the model selector and run queries with your Qubrid endpoint and API key
+
+## Configuration values
+
+Use the values from the Qubrid AI Playground when configuring the provider:
+
+- **Provider name:** `Qubrid AI`
+- **Provider type:** `OpenAI`
+- **Endpoint:** Your Qubrid endpoint URL
+- **Model name:** The Qubrid model name from the playground
+- **API key:** Your Qubrid API key
+
+## Verify the setup
+
+After adding the provider, open the model selector in Zed and choose a Qubrid model. Send a test prompt to confirm that Zed can reach the Qubrid endpoint and return a response.
+
+## Troubleshooting
+
+If prompts run longer than expected, review Zed's provider settings and timeout configuration using the link below. Also confirm that the endpoint, model name, and API key match the values shown in the Qubrid AI Playground.
+
+<Card
+  title="Go to Zed.dev Docs"
+  icon="book-open"
+  href="https://zed.dev/docs/ai/llm-providers"
+  horizontal
+>
+  If you have any questions related to Zed.dev, this is your place to be
+</Card>

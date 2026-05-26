@@ -205,6 +205,12 @@
               ]
             },
           {
+            "group": "Integrations",
+            "pages": [
+              "Zed"
+            ]
+          },
+          {
             "group": "AI Tools",
             "pages": [
               "Fine Tuning",
