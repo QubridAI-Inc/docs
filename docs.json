@@ -207,7 +207,8 @@
           {
             "group": "Integrations",
             "pages": [
-              "Zed"
+              "Integrations/Zed",
+              "Integrations/OpenClaw"
             ]
           },
           {
@@ -306,6 +307,16 @@
       "vscode"
     ]
   },
+  "redirects": [
+    {
+      "source": "/Zed",
+      "destination": "/Integrations/Zed"
+    },
+    {
+      "source": "/zed",
+      "destination": "/Integrations/Zed"
+    }
+  ],
   "footer": {
     "socials": {
       "x": "https://x.com/Qubrid_AI",

@@ -1,0 +1,240 @@
+---
+title: "OpenClaw"
+description: "Install OpenClaw and connect it to Qubrid AI models through the OpenAI-compatible API"
+icon: "robot"
+---
+
+[OpenClaw](https://openclaw.ai/) is a personal AI assistant you run on your own devices. Connect it to Qubrid AI to use Qubrid models through OpenClaw's onboarding flow and interact via the terminal, web UI, or messaging channels.
+
+
+
+<Info>
+  **Prerequisites**:
+  - **Node.js 22.19+** or **Node.js 24** (recommended) installed on your machine
+  - npm or pnpm available in your terminal
+  - A Qubrid account on the [Qubrid AI Platform](https://platform.qubrid.com/)
+  - A Qubrid API key ([how to generate an API key](/Manage%20API%20Keys#how-to-generate-an-api-key))
+</Info>
+
+
+
+## Install OpenClaw
+
+OpenClaw supports multiple installation methods. See the [OpenClaw GitHub repository](https://github.com/openclaw/openclaw) for Docker, Nix, and other setup options.
+
+This guide uses **npm** (you can also use `pnpm add -g openclaw@latest`).
+
+<Steps>
+
+<Step title="Install OpenClaw globally">
+Open a command prompt or terminal and run:
+
+```shell
+npm install -g openclaw@latest
+```
+
+Or with pnpm:
+
+```shell
+pnpm add -g openclaw@latest
+```
+</Step>
+
+<Step title="Start onboarding">
+Run the onboarding command with the daemon installer:
+
+```shell
+openclaw onboard --install-daemon
+```
+
+This launches the OpenClaw onboarding wizard and installs the gateway service so OpenClaw stays running in the background.
+</Step>
+
+</Steps>
+
+
+
+## Configure Qubrid AI in OpenClaw
+
+<Steps>
+
+<Step title="Review the security notice">
+Read through the security notice carefully. Choose **Yes** or **No** based on your preference.
+
+Use the **cursor keys** to move between options. Selecting **No** stops onboarding-choose **Yes** to continue.
+</Step>
+
+<Step title="Select Quickstart onboarding mode">
+When prompted for **Onboarding Mode**, choose **Quickstart** (you can use **Manual** later for advanced configuration).
+</Step>
+
+<Step title="Select Custom provider">
+In the **Model Provider** section, select **Custom provider**.
+
+Custom providers support any OpenAI- or Anthropic-compatible API. Qubrid endpoints are **OpenAI-compatible**, so this is the right choice for Qubrid AI.
+</Step>
+
+<Step title="Enter the Qubrid API base URL">
+When prompted for the API base URL, clear the default value and enter:
+
+```
+https://platform.qubrid.com/v1
+```
+
+This is the Qubrid OpenAI-compatible API base URL.
+</Step>
+
+<Step title="Paste your Qubrid API key">
+When asked how you want to provide the API key, select **Paste API Key now**.
+
+1. Open the [Qubrid AI Platform](https://platform.qubrid.com/api-keys) and create an API key. Follow the steps in [How to generate an API Key](/Manage%20API%20Keys#how-to-generate-an-api-key).
+2. Copy the key and paste it into the onboarding prompt.
+
+<Note>
+Your API key is shown **only once** for security. Store it somewhere safe and secure before closing the dialog. If you lose it, you must generate a new key.
+</Note>
+</Step>
+
+<Step title="Select OpenAI-compatible endpoint">
+When prompted for **endpoint compatibility**, select **OpenAI Compatible**.
+</Step>
+
+<Step title="Enter the model ID">
+Enter the **model ID** for the Qubrid model you want to use.
+
+For example, to use **GPT OSS 120B**, enter:
+
+```
+openai/gpt-oss-120b
+```
+
+On the Qubrid platform, open the model page-the model ID is shown beside the model name. Click the **copy** button next to the ID to copy it exactly.
+</Step>
+
+<Step title="Wait for verification">
+OpenClaw verifies the connection to your Qubrid endpoint. This may take a moment.
+</Step>
+
+<Step title="Set endpoint ID and model alias (optional)">
+After verification:
+
+- **Endpoint ID** - A custom label you choose (for example `qubrid` or `qubrid-gpt-oss-120b`).
+- **Model alias** - Optional display name for the model in OpenClaw. Set it however you prefer, or leave it blank.
+</Step>
+
+<Step title="Configure or skip channels">
+OpenClaw asks you to select a channel, such as **Telegram**, **WhatsApp**, **Discord**, **Slack**, **Google Chat**, or **Microsoft Teams**.
+
+- **Configure now** - Follow the extra steps to link your account on the channel you choose.
+- **Skip for now** - You can add channels later and use OpenClaw from the TUI or web UI in the meantime.
+</Step>
+
+<Step title="Configure or skip search providers">
+You can connect search providers such as **Brave Search**, **Gemini**, **Grok (xAI)**, **Kimi**, or **Perplexity**.
+
+For this guide, skip search provider setup for now. You can configure them later if needed.
+</Step>
+
+<Step title="Configure or skip skills">
+When asked whether to configure **skills**, select **No** for now, or configure them if you want OpenClaw to use bundled or custom skills immediately.
+</Step>
+
+<Step title="Configure hooks">
+OpenClaw asks whether to enable **hooks**. Enable all hooks, select only the ones you need, or skip based on your preference.
+</Step>
+
+<Step title="Confirm gateway installation">
+After onboarding completes, the **gateway service** is installed and running.
+</Step>
+
+<Step title="Launch OpenClaw">
+Back in the command prompt, choose how you want to **hatch your bot**:
+
+- **TUI** (recommended) - Terminal user interface
+- **Web UI** - Browser-based interface
+
+OpenClaw opens on localhost. Your default Qubrid model appears as the selected model-you are ready to explore.
+</Step>
+
+</Steps>
+
+Your Qubrid integration with OpenClaw is now configured. You can chat with your assistant in the TUI or web UI, and add messaging channels whenever you are ready.
+
+
+
+## Things you can do with OpenClaw
+
+Once setup is complete, try these examples:
+
+- **Chat in the TUI or web UI** - Ask questions, draft content, or debug code using your Qubrid model.
+- **Run agent tasks** - Use `openclaw agent` to run multi-step tasks with configurable thinking depth.
+- **Connect messaging apps** - Talk to your assistant on WhatsApp, Telegram, Discord, Slack, and other supported channels.
+- **Send messages from the CLI** - Use `openclaw message send` to send messages through a connected channel.
+- **Add skills and automation** - Enable skills, cron jobs, and hooks for recurring or event-driven workflows.
+- **Switch models** - Change the default model or add more Qubrid models through OpenClaw's model configuration.
+
+For more commands and features, see the [OpenClaw documentation](https://docs.openclaw.ai/).
+
+
+
+## Monitor usage on Qubrid
+
+Keep an eye on your **credits** and **API logs** on the Qubrid platform to track consumption and debug requests.
+
+- Review credit balance before long-running or high-volume sessions.
+- Check API logs if responses fail or latency is higher than expected.
+- Rotate API keys if you suspect a key was exposed.
+
+
+
+## Configuration reference
+
+Use these values when connecting OpenClaw to Qubrid during onboarding:
+
+| Setting | Value |
+| --- | --- |
+| **Provider** | Custom provider |
+| **API base URL** | `https://platform.qubrid.com/v1` |
+| **Endpoint compatibility** | OpenAI Compatible |
+| **Example model ID** | `openai/gpt-oss-120b` |
+| **API key** | Your Qubrid API key |
+
+Model IDs vary by model-always copy the ID from the model page on the Qubrid platform.
+
+
+
+## Frequently Asked Questions (FAQ)
+
+<Accordion icon="question" title="Onboarding stops at the security notice">
+You must accept the security notice to continue. Use the **cursor keys** to move between options and select **Yes**.
+
+Selecting **No** stops onboarding. Choose **Yes** to proceed with setup.
+</Accordion>
+
+<Accordion icon="question" title="Model verification fails">
+Confirm the following:
+
+- **API base URL** is exactly `https://platform.qubrid.com/v1`
+- **API key** is valid and pasted correctly (generate a new key if needed from [Manage API Keys](/Manage%20API%20Keys#how-to-generate-an-api-key))
+- **Model ID** matches the value on the Qubrid model page (for example `openai/gpt-oss-120b`)
+- **Endpoint compatibility** is set to **OpenAI Compatible**
+</Accordion>
+
+<Accordion icon="question" title="Model not available in OpenClaw">
+Ensure model verification completed successfully during onboarding. Check that your **endpoint ID** and **model alias** were saved.
+
+If the model still does not appear, restart or check the gateway:
+
+```shell
+openclaw gateway status
+```
+</Accordion>
+
+<Card
+  title="Go to OpenClaw.ai"
+  icon="book-open"
+  href="https://openclaw.ai/"
+  horizontal
+>
+  If you have any questions related to OpenClaw, this is your place to be
+</Card>
