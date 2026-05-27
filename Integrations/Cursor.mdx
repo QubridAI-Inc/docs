@@ -1,0 +1,162 @@
+---
+title: "Cursor"
+description: "Configure Cursor to use Qubrid AI models through the OpenAI-compatible provider"
+icon: "arrow-pointer"
+---
+
+Connect Cursor to Qubrid AI by adding Qubrid as an OpenAI-compatible model provider. After setup, you can select Qubrid models from the Cursor chat and use AI-powered coding assistance with your Qubrid endpoint and API key.
+
+
+
+<Info>
+  **Prerequisites**:
+  - Cursor editor installed on your machine
+  - A Qubrid account on the [Qubrid AI Platform](https://platform.qubrid.com/)
+  - A Qubrid API key ([how to generate an API key](/Manage%20API%20Keys#how-to-generate-an-api-key))
+</Info>
+
+
+
+## Configure Qubrid AI in Cursor
+
+<Steps>
+
+<Step title="Open Cursor Settings">
+Open **Cursor Settings** from the Cursor menu or with `Ctrl+,` on Windows/Linux and `Cmd+,` on macOS.
+</Step>
+
+<Step title="Go to the Models tab">
+In the settings panel, open the **Models** tab.
+</Step>
+
+<Step title="Uncheck existing models">
+Uncheck every model in the list so Cursor does not route requests to built-in providers. This ensures your custom Qubrid model is used when you select it in chat.
+</Step>
+
+<Step title="Open the API Keys section">
+Scroll down to **API Keys** and click the **down arrow** to expand the section.
+</Step>
+
+<Step title="Enable the OpenAI API Key">
+Enable the **OpenAI API Key** section so you can enter your Qubrid credentials.
+</Step>
+
+<Step title="Generate and paste your Qubrid API key">
+1. Open the [Qubrid AI Platform](https://platform.qubrid.com/api-keys) and generate an API key. Follow [How to generate an API Key](/Manage%20API%20Keys#how-to-generate-an-api-key).
+2. Return to Cursor and paste the key into **Enter your OpenAI API Key**.
+
+<Note>
+Your API key is shown **only once** for security. Store it somewhere safe and secure before closing the dialog. If you lose it, you must generate a new key.
+</Note>
+</Step>
+
+<Step title="Override the OpenAI base URL">
+Turn on the toggle for **Override OpenAI Base URL** and paste the Qubrid base URL:
+
+```
+https://platform.qubrid.com/v1
+```
+</Step>
+
+<Step title="View all models and add a custom model">
+Scroll up slightly and click **View all models**, then select **+ Add Custom Model**.
+</Step>
+
+<Step title="Enter the Qubrid model ID">
+Enter the **Model ID** for the model you want to use.
+
+You can find the model ID on the model page on the Qubrid platform, right beside the model name-click the **copy** button to copy it exactly.
+
+For example, **Qwen 3.7 Max** uses:
+
+```
+Qwen/Qwen3.7-Max
+```
+
+You can also copy the model ID from the [AI Playground](https://platform.qubrid.com/playground) under the **Serverless endpoint** section. The ID must match exactly or the model will not work in Cursor.
+</Step>
+
+<Step title="Select your Qubrid model in chat">
+Open the Cursor chat screen. Click the pill that says **Auto**, turn the toggle **off**, then select the custom model you just added.
+
+You can now use Cursor with your Qubrid model. Send a test prompt to confirm responses are coming from Qubrid.
+</Step>
+
+</Steps>
+
+Your Qubrid integration with Cursor is now configured.
+
+
+
+## Monitor usage on Qubrid
+
+Keep an eye on your usage and costs on the Qubrid platform.
+
+- Review **[Inference Logs](https://platform.qubrid.com/inferencing-logs)** to see request history and debug issues.
+- Check your credit balance before long or high-volume coding sessions.
+- Rotate API keys if you suspect a key was exposed.
+
+
+
+## Configuration reference
+
+| Setting | Value |
+| --- | --- |
+| **OpenAI API Key** | Your Qubrid API key |
+| **Override OpenAI Base URL** | `https://platform.qubrid.com/v1` |
+| **Example model ID** | `Qwen/Qwen3.7-Max` |
+
+Model IDs vary by model-always copy the ID from the model page or Playground.
+
+
+
+## Frequently Asked Questions (FAQ)
+
+<Accordion icon="question" title="API requests fail or return errors">
+Confirm the following:
+
+- **OpenAI API Key** is your valid Qubrid API key (regenerate from [Manage API Keys](/Manage%20API%20Keys#how-to-generate-an-api-key) if needed)
+- **Override OpenAI Base URL** is exactly `https://platform.qubrid.com/v1`
+- Other models are **unchecked** in the Models tab so Cursor does not fall back to a different provider
+</Accordion>
+
+<Accordion icon="question" title="Custom model does not appear in chat">
+Make sure you:
+
+- Added the model with **+ Add Custom Model** and used the exact model ID from the platform or Playground
+- Opened chat, clicked the **Auto** pill, and turned the toggle **off**
+- Selected your custom Qubrid model from the list
+
+If the model ID is wrong, Cursor will not connect to Qubrid successfully.
+</Accordion>
+
+<Accordion icon="question" title="Cursor still uses Auto or a built-in model">
+In the chat panel, click the **Auto** pill and turn the toggle **off**. Then manually select your custom Qubrid model.
+
+Also confirm every other model is **unchecked** under **Cursor Settings → Models** so Cursor does not route to a default provider.
+</Accordion>
+
+<Accordion icon="question" title="Model ID is not recognized or responses fail">
+The model ID must match the value on the Qubrid model page or in the Playground **Serverless endpoint** field-for example `Qwen/Qwen3.7-Max`. IDs are case-sensitive and include the provider prefix (such as `Qwen/` or `openai/`).
+
+Copy the ID with the copy button on the platform rather than typing it manually.
+</Accordion>
+
+<Accordion icon="question" title="Responses are slow or time out">
+Check your network connection and confirm the Qubrid endpoint is reachable. Review the model's expected response time in the [AI Playground](https://platform.qubrid.com/playground).
+
+Use [Inference Logs](https://platform.qubrid.com/inferencing-logs) to see whether requests are failing or taking longer than expected on the platform side.
+</Accordion>
+
+<Accordion icon="question" title="How do I track usage and costs?">
+Open [Inference Logs](https://platform.qubrid.com/inferencing-logs) on the Qubrid platform to review API usage, monitor spend, and troubleshoot failed requests.
+</Accordion>
+
+<Card
+  title="Go to Cursor Docs"
+  icon="book-open"
+  href="https://docs.cursor.com/context/model-settings"
+  horizontal
+>
+  If you have any questions related to Cursor, this is your place to be
+</Card>

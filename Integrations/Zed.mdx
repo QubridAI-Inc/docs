@@ -10,11 +10,9 @@ Connect Zed to Qubrid AI by adding Qubrid as an OpenAI-compatible model provider
 
 <Info>
   **Prerequisites**:
-  - Zed installed on your machine
-  - A Qubrid account with access to the AI Playground
-  - A Qubrid API key
-  - The Qubrid endpoint URL from the AI Playground
-  - The model name you want to use from Qubrid AI
+  - [Zed](https://zed.dev/) installed on your machine
+  - A Qubrid account on the [Qubrid AI Platform](https://platform.qubrid.com/)
+  - A Qubrid API key ([how to generate an API key](/Manage%20API%20Keys#how-to-generate-an-api-key))
 </Info>
 
 
@@ -24,50 +22,103 @@ Connect Zed to Qubrid AI by adding Qubrid as an OpenAI-compatible model provider
 <Steps>
 
 <Step title="Open the model provider panel">
-Open the model provider panel in Zed
+Open the **model provider** panel in Zed.
 </Step>
 
 <Step title="Add an OpenAI provider">
-Click **Add provider** and select **OpenAI**
+Click **Add provider** and select **OpenAI**.
 
 ![Add OpenAI provider in Zed](/images/Zed-1.png)
 </Step>
 
-<Step title="Add your Qubrid AI configuration">
-Copy the endpoint, model name, and API key from the Qubrid AI Playground, then replace the OpenAI provider values with your Qubrid values
+<Step title="Add your Qubrid API key">
+1. Open the [Qubrid AI Platform](https://platform.qubrid.com/api-keys) and generate an API key. Follow [How to generate an API Key](/Manage%20API%20Keys#how-to-generate-an-api-key).
+2. In Zed, paste the key into the provider's API key field.
 
-Keep the provider name as **Qubrid AI** so it is easy to identify in Zed
+<Note>
+Your API key is shown **only once** for security. Store it somewhere safe and secure before closing the dialog. If you lose it, you must generate a new key.
+</Note>
+</Step>
+
+<Step title="Set the Qubrid endpoint and model">
+Copy the endpoint, model name, and API key from the [Qubrid AI Playground](https://platform.qubrid.com/playground), then replace the OpenAI provider values with your Qubrid values.
+
+Use the Qubrid base URL:
+
+```
+https://platform.qubrid.com/v1
+```
+
+Keep the provider name as **Qubrid AI** so it is easy to identify in Zed.
+
+On the model page, the model ID appears beside the model name-click **copy** to paste it exactly (for example `openai/gpt-oss-120b`).
 
 ![Configure Qubrid AI provider in Zed](/images/Zed-2.png)
 </Step>
 
 <Step title="Select a Qubrid AI model">
-Click the model selector at the bottom of Zed to find the Qubrid AI models
+Click the model selector at the bottom of Zed and choose your Qubrid model.
 
 ![Select Qubrid AI model in Zed](/images/Zed-3.png)
+
+Send a test prompt to confirm Zed reaches the Qubrid endpoint and returns a response.
 </Step>
 
 </Steps>
 
-Your Qubrid integration with Zed is now configured. You can select Qubrid models from the model selector and run queries with your Qubrid endpoint and API key
+Your Qubrid integration with Zed is now configured. You can select Qubrid models from the model selector and run queries with your Qubrid endpoint and API key.
 
-## Configuration values
 
-Use the values from the Qubrid AI Playground when configuring the provider:
 
-- **Provider name:** `Qubrid AI`
-- **Provider type:** `OpenAI`
-- **Endpoint:** Your Qubrid endpoint URL
-- **Model name:** The Qubrid model name from the playground
-- **API key:** Your Qubrid API key
+## Monitor usage on Qubrid
 
-## Verify the setup
+Keep an eye on your usage and costs on the Qubrid platform.
 
-After adding the provider, open the model selector in Zed and choose a Qubrid model. Send a test prompt to confirm that Zed can reach the Qubrid endpoint and return a response.
+- Review **[Inference Logs](https://platform.qubrid.com/inferencing-logs)** to see request history and debug issues.
+- Check your credit balance before long or high-volume sessions.
+- Rotate API keys if you suspect a key was exposed.
 
-## Troubleshooting
 
-If prompts run longer than expected, review Zed's provider settings and timeout configuration using the link below. Also confirm that the endpoint, model name, and API key match the values shown in the Qubrid AI Playground.
+
+## Configuration reference
+
+| Setting | Value |
+| --- | --- |
+| **Provider name** | `Qubrid AI` |
+| **Provider type** | `OpenAI` |
+| **Endpoint** | `https://platform.qubrid.com/v1` |
+| **Example model ID** | `openai/gpt-oss-120b` |
+| **API key** | Your Qubrid API key |
+
+Model IDs vary by model-always copy the ID from the model page or Playground.
+
+
+
+## Frequently Asked Questions (FAQ)
+
+<Accordion icon="question" title="API requests fail or return errors">
+Confirm the following:
+
+- **API key** is your valid Qubrid key (regenerate from [Manage API Keys](/Manage%20API%20Keys#how-to-generate-an-api-key) if needed)
+- **Endpoint** matches the value from the Qubrid AI Playground (typically `https://platform.qubrid.com/v1`)
+- **Provider type** is set to **OpenAI**
+</Accordion>
+
+<Accordion icon="question" title="Model not listed or not working in Zed">
+Ensure the **model ID** matches the value on the Qubrid model page or in the Playground **Serverless endpoint** field. IDs are case-sensitive and include the provider prefix (for example `openai/` or `Qwen/`).
+
+Copy the ID with the copy button on the platform rather than typing it manually.
+</Accordion>
+
+<Accordion icon="question" title="Prompts run slowly or time out">
+Review Zed's provider settings and timeout configuration in the [Zed LLM providers docs](https://zed.dev/docs/ai/llm-providers). Also confirm the endpoint, model name, and API key match the values shown in the Qubrid AI Playground.
+
+Check [Inference Logs](https://platform.qubrid.com/inferencing-logs) on Qubrid for failed or slow requests.
+</Accordion>
+
+<Accordion icon="question" title="How do I track usage and costs?">
+Open [Inference Logs](https://platform.qubrid.com/inferencing-logs) on the Qubrid platform to review API usage, monitor spend, and troubleshoot failed requests.
+</Accordion>
 
 <Card
   title="Go to Zed.dev Docs"

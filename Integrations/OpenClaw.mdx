@@ -179,10 +179,10 @@ For more commands and features, see the [OpenClaw documentation](https://docs.op
 
 ## Monitor usage on Qubrid
 
-Keep an eye on your **credits** and **API logs** on the Qubrid platform to track consumption and debug requests.
+Keep an eye on your usage and costs on the Qubrid platform.
 
-- Review credit balance before long-running or high-volume sessions.
-- Check API logs if responses fail or latency is higher than expected.
+- Review **[Inference Logs](https://platform.qubrid.com/inferencing-logs)** to see request history and debug issues.
+- Check your credit balance before long-running or high-volume sessions.
 - Rotate API keys if you suspect a key was exposed.
 
 
@@ -228,6 +228,16 @@ If the model still does not appear, restart or check the gateway:
 ```shell
 openclaw gateway status
 ```
+</Accordion>
+
+<Accordion icon="question" title="Responses are slow or time out">
+Check your network connection and confirm the Qubrid base URL is exactly `https://platform.qubrid.com/v1`. Review the model in the [AI Playground](https://platform.qubrid.com/playground) for expected latency.
+
+Use [Inference Logs](https://platform.qubrid.com/inferencing-logs) to see whether requests are failing or taking longer than expected on the platform side.
+</Accordion>
+
+<Accordion icon="question" title="How do I track usage and costs?">
+Open [Inference Logs](https://platform.qubrid.com/inferencing-logs) on the Qubrid platform to review API usage, monitor spend, and troubleshoot failed requests.
 </Accordion>
 
 <Card

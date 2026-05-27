@@ -208,7 +208,8 @@
             "group": "Integrations",
             "pages": [
               "Integrations/Zed",
-              "Integrations/OpenClaw"
+              "Integrations/OpenClaw",
+              "Integrations/Cursor"
             ]
           },
           {
